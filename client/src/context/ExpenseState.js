@@ -11,7 +11,7 @@ const ExpenseState = (props) => {
 
   const handleRegister = async (data) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/resgister/', data, {
+      let response = await axios.post('http://localhost:8000/api/resgister/', data, {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token') || ""}`
         }
@@ -55,7 +55,25 @@ const ExpenseState = (props) => {
         }
       }) 
       response=await response.data 
-      console.log(response)
+      if(response.success){
+        console.log(response)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const getPredictionOutput = async (data) => {
+    try {
+      let response = await axios.post('http://localhost:8000/api/getPredictionOutput/',data, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token') || ""}`
+        }
+      }) 
+      response=await response.data 
+      if(response.success){
+        console.log(response)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -70,13 +88,14 @@ const ExpenseState = (props) => {
       }) 
       response=await response.data 
       console.log(response)
+      navigate('/navbar',{new:true})
     } catch (error) {
       console.log(error)
     }
   }
 
   return (
-    <ExpenseContext.Provider value={{ handleLogin, handleRegister,prompt ,getExpense}}>
+    <ExpenseContext.Provider value={{ handleLogin, handleRegister,prompt ,getExpense,getPredictionOutput}}>
       {props.children}
     </ExpenseContext.Provider>
   )

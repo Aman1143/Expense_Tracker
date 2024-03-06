@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=^r_yh)lz_qror6%m^#ts)b8&)$!8_qwjk!#hvs$yd)!^hfny*'
+SECRET_KEY = 'django-insecure-@9(zy2xoxl32e9jr!bkzzj9@-1xp1mky$)a=)=qaihwb7=qvjj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
+
 CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'server.urls'
 
@@ -83,8 +84,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'expense_tracker',
-        'USER': 'admin',
-        'PASSWORD': 'Nanda@1234',
+        'USER': 'root',
+        'PASSWORD': 'Mysql@1234',
         'HOST': 'localhost',
         'PORT': '3306',
     }
